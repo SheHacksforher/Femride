@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--index.html-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEMRIDE - Women Only Vehicle Pooling</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file for styling -->
+</head>
+<body>
+    <img class="img" src="logo-no-background.png">
+    <div class="container">
+        <form class="login-form" action="#" method="post" id="loginForm">
+            <div class="input-group">
+                <label for="username">Username: </label>
+                <input type="text" name="username" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            
+            <button class="btn" type="submit">Login</button>
+            <div class="signup">
+                <p>Don't have an account? <a href="signup.html">Sign Up</a></p> <!-- Link to signup page -->
+            </div>
+        </form>
+        <h3>Together we ride, Together we Thrive!!!!!</h3>
+        <button id="sosButton">SOS</button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+
+            loginForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                try {
+                    const formData = new URLSearchParams(new FormData(loginForm)); // Serialize form data
+                    const response = await fetch('/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        window.location.href = '/user'; // Redirect to '/user' after successful login
+                    } else {
+                        const errorText = await response.text();
+                        alert(errorText);
+                    }
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    // Handle error cases if needed
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const sosButton = document.getElementById('sosButton');
+      
+            sosButton.addEventListener('click', () => {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                  (position) => {
+                    const { latitude, longitude } = position.coords;
+                    console.log('Latitude:', latitude);
+                    console.log('Longitude:', longitude);
+      
+                    // Send location to server
+                    fetch('http://localhost:3000/saveLocation', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ latitude, longitude }),
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json(); // Only parse JSON for successful responses
+                        } else {
+                            throw new Error('Failed to send location to server');
+                        }
+                    })
+                    .then(data => {
+                        console.log('Location sent successfully:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error sending location to server:', error.message);
+                    });
+                    
+                  },
+                  (error) => {
+                    console.error('Error getting location:', error.message);
+                  }
+                );
+              } else {
+                console.error('Geolocation is not supported by your browser.');
+              }
+            });
+          });
+      
+    </script>
+</body>
+</html>

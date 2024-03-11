@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('12.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+.corner {
+    margin-left: 15px;
+    margin-top: 5px;
+    width: 200px;
+    position: absolute; /* Position the image absolutely */
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%; /* Set the container to the full height of the viewport */
+}
+
+.signup-form {/* White background */
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.img {
+    height: 60px;
+    width: 70%;
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+h2 {
+    margin-top: 100px;
+    color: #ffffff; 
+    margin-left: 100px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    color: #ffffff; /* Label color */
+    margin-bottom: 5px; /* Adjust the space between label and input */
+}
+.input-group input {
+    width: 100%;
+    padding: 10px; /* Increase the padding for a larger text box */
+    border: 1px solid #800080; /* Dark pink border */
+    border-radius: 5px;
+}
+
+
+
+
+
+.btn {
+    width: 30%;
+    padding: 10px; /* Adjust padding for better spacing */
+    margin-top: 10px; /* Adjust the top margin to move the button down */
+    background-color: #800080;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 150px;
+}
+
+
+.btn:hover {
+    background-color: #834c83
+    ; /* Lighter pink color on hover */
+}
+
+.signup {
+    margin-top: 20px;
+    color: #c782c7;
+    margin-left:10px;
+    margin-top: 30px;
+}
+
+.signup a {
+    color: #c782c7; /* Dark pink link color */
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+h3 {
+    position: absolute; /* Set h3 position to absolute */
+    bottom: 0; /* Position h3 at the bottom */
+    left: 470px; /* Center h3 horizontally */
+    margin: 0; /* Remove default margin */
+    color: #02aaaa; /* Set h3 text color to white */
+}
